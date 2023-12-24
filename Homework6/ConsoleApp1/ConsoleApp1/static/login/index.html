@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Работа в Додо Пицце</title>
+    <meta data-n-head="ssr" charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "Dodo Rounded v2";
+        src: local("Dodo Rounded v2 Regular"), local("DodoRounded_v2-Regular"),
+          url(/fonts/DodoRounded_v2-Regular.fc64161.woff2) format("woff2"),
+          url(/fonts/DodoRounded_v2-Regular.3e426cc.woff) format("woff"),
+          url(/fonts/DodoRounded_v2-Regular.333d6ea.ttf) format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Dodo Rounded v2";
+        src: local("Dodo Rounded v2 Medium"), local("DodoRounded_v2-Medium"),
+          url(/fonts/DodoRounded_v2-Medium.bc435e3.woff) format("woff"),
+          url(/fonts/DodoRounded_v2-Medium.8e828c6.woff2) format("woff2"),
+          url(/fonts/DodoRounded_v2-Medium.87ff612.ttf) format("truetype");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Dodo Rounded v2";
+        src: local("Dodo Rounded v2 Bold"), local("DodoRounded_v2-Bold"),
+          url(/fonts/DodoRounded_v2-Bold.16f4a88.woff) format("woff"),
+          url(/fonts/DodoRounded_v2-Bold.f9e63df.woff2) format("woff2"),
+          url(/fonts/DodoRounded_v2-Bold.de0b720.ttf) format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      :after,
+      :before {
+        box-sizing: inherit;
+      }
+      .h1-title
+      {
+        margin-bottom: 10.6px;
+        font-size: 80px;
+        line-height: 88px;
+        font-weight: 500;
+        z-index: 15;
+        font-family: Dodo Rounded v2,sans-serif;
+      }
+      .h2-title
+      {
+        font-size: 46px;
+        line-height: 64px;
+        font-weight: 500;
+        font-family: Dodo Rounded v2,sans-serif;
+      }
+      .h3-worker
+      {
+        position: relative;
+        display: inline-block;
+        padding: 3.5px 8px;
+        font-size: 20px;
+        line-height: 100%;
+        font-weight: 500;
+        background-color: #efe41a;
+        border-radius: 20px;
+        font-family: Dodo Rounded v2,sans-serif;
+      }
+      .h3-card
+      {
+        font-family: Dodo Rounded v2,sans-serif;
+        display: block;
+        margin-bottom: 24px;
+        font-size: 32px;
+        line-height: 36px;
+        font-weight: 500;
+        color: #000;
+      }
+      .title-text
+      {
+        font-family: Dodo Rounded v2,sans-serif;
+        font-size: 22px;
+        line-height: 36px;
+        font-weight: 400;
+        color: #000;
+      }
+      .double-phrase-block
+      {
+        font-family: Dodo Rounded v2,sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 26.3547px;
+        line-height: 36.03px;
+        font-weight: 500;
+        letter-spacing: .035em;
+      }
+      .first-phrase
+      {
+        padding: 2.76496px 16.0011px 1.94124px;
+        background-color: #efe41a;
+        border-radius: 20.7073px;
+        position: relative;
+        z-index: 5;
+        transition: background-color .2s ease-in-out;
+      }
+      .second-phrase
+      {
+        padding: 2.76496px 16.0011px 1.94124px;
+        background-color: #efe41a;
+        border-radius: 20.7073px;
+        position: relative;
+        z-index: 5;
+        transition: background-color .2s ease-in-out;
+            margin-top: -7px;
+        border-radius: 18.8248px 20.7073px 20.7073px 3.76496px;
+        z-index: 4;
+      }
+      .card
+      {
+        float: left;
+        width: 31%;
+        margin-right: 2%;
+        padding: 32px 40px 48px;
+        border-radius: 64px;
+        min-height: 605px;
+        max-height: 605px;
+        transition: transform .5s ease-in-out;
+        height: 100%;
+      }
+      .card-text
+      {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 400;
+        font-family: Dodo Rounded v2,sans-serif;
+      }
+      .line_block {
+            font-size: 16px;
+            line-height: 24px;
+            float:left;
+            margin: 0 80px 40px 0;
+            text-align:left;
+        }
+        .mrgn-5{
+            margin: 0 5px 5px 0;
+        }
+        .mrgn-20{
+            margin: 0 20px 20px 0;
+        }
+        .centerblock {
+            display: flex;
+            justify-content: center;
+        }
+        .fblock{
+            margin-top: 15px;
+            display: flex;
+        }
+        .text {
+            text-decoration: none;
+            font-stretch: condensed;
+            font-family: Dodo Rounded v2, sans-serif;
+        }
+        .black {
+            color: black;
+        }
+        .gray {
+            color:gray;
+            text-decoration: none;
+        }
+        .gray:hover {
+            color: black;
+        }
+        .lib {
+            display: flex;
+            list-style-type: none;
+            margin-left: 40px;
+        }
+        .lia {
+            display: flex;
+            list-style-type: none;
+        }
+        .lgray{
+            color: lightgray;
+        }
+        .gg {
+            background-color: #efefef;;
+        }
+        .ggl {
+            color: rgba(0,0,0,.3);
+        }
+        .or {
+            color: #ed771e;
+        }
+        .org {
+            background-color: #ed771e;
+        }
+        .white {
+            color: white;
+        }
+        .l1 {
+            background-color: lightgray;
+            height: 1px;
+        }
+        .ms {
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+        .mla {
+            margin-left: auto;
+        }
+        .coords {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .fnw {
+            font-weight: 500;
+        }
+        .fns-32 {
+            font-size: 48px;
+        }
+        .fns-18 {
+            font-size: 18px;
+            line-height: 24px;
+        }
+        .fns22 {
+            font-size: 22px;
+        }
+        .fns40 {
+            font-size: 40px;
+        }
+        .boxes {
+            border: 2px solid #efefef;
+            border-radius: 16px;
+            height: 64px;
+            font-family: "Dodo Rounded v2",sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 36px;
+            width: 570px;
+            margin-bottom: 20px;
+        }
+        .boxes1 {
+            outline: none;
+            border: none;
+            padding: 28px 32px;
+            background-color: #f8f8f8;
+            width: 100%;
+            border-radius: 24px;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color .2s ease-in-out;
+            color: #000;
+        }
+        .ml-30 {
+            margin-left: 30px;
+        }
+        .mr-30 {
+            margin-right: 30px;
+        }
+        .ml-10 {
+            margin-left: 10px;
+        }
+        .mr-10 {
+            margin-right: 10px;
+        }
+        .wd275{
+            width: 258px;
+        }
+        .wd400{
+            width: 400px;
+        }
+        ul{
+            list-style: none;
+            margin-left: 0;
+            padding: 0;
+        }
+        input {padding-left: 30px;}
+        .custom-checkbox {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+        }
+        .custom-checkbox+label {
+            display: inline-flex;
+            align-items: center;
+            user-select: none;
+        }
+        .custom-checkbox+label::before {
+            content: '';
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            flex-shrink: 0;
+            flex-grow: 0;
+            border: 1px solid #faefe1;
+            border-radius: 0.25em;
+            margin-right: 0.5em;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 50% 50%;
+        }
+        .custom-checkbox:checked+label::before {
+            border-color: #faefe1;
+            background-color: #faefe1;
+            left: 3px;
+            top: 4px;
+            width: 10px;
+            height: 5px;
+            border-radius: 1px;
+            border-left: 4px solid #ed771e;
+            border-bottom: 4px solid #ed771e;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        /* стили для активного состояния чекбокса (при нажатии на него) */
+        .custom-checkbox:not(:disabled):active+label::before {
+            background-color: #faefe1;
+            border-color: #faefe1;
+        }
+        /* стили для чекбокса, находящегося в фокусе */
+        .custom-checkbox:focus+label::before {
+            box-shadow: #faefe1;
+        }
+        /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+        .custom-checkbox:focus:not(:checked)+label::before {
+            border-color: #faefe1;
+        }
+        /* стили для чекбокса, находящегося в состоянии disabled */
+        .custom-checkbox:disabled+label::before {
+            background-color: #faefe1;
+        }
+        .but {
+            margin-top: 32px;
+            padding: 21px 19px;
+            text-align: center;
+            width: 400px;
+            border-radius: 64px;
+            font-size: 22px;
+            line-height: 22px;
+            font-weight: 500;
+        }
+        .mb-50 {
+            margin-bottom: 50px;
+        }
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <header
+    style = "margin-left: 203px; margin-right: 50px; margin-top: 40px; min-width: 1200px"
+    >
+    <div
+    style="clear:both;">
+        <a
+        href="#top"
+        aria-label="Главная страница"
+        class="header__logo"
+        >
+        <img
+        src="dodo3_files/dodo_logo.png"
+        fill="none"
+        >
+        </img>
+        </a>
+    </div>
+    <div
+    style="margin-left: 60%; margin-top: -60px;float:left; margin-right: auto;"
+    >
+        <a
+        id="anchor_header"
+        href="#questioning"
+        style="padding: 21px 22px 17px !important;
+        background: #efe41a;
+        border-radius: 64px;
+        text-decoration: none;
+        color: black;"
+        >
+            <b style="
+            font-family: Dodo Rounded v2, sans-serif;
+            font-size: 22px;"
+            >
+            Заполнить анкету
+            </b>
+        </a>
+        <div
+        style="float:right; margin-top: -15px; margin-left: 20px;">
+            <img
+            src="dodo3_files/header_work.png"
+            fill="none"
+            >
+        </div>
+    </div>
+    </header>
+    <div  style="clear:both; margin-left: 13%; margin-right: 13%; margin-top: 25px; height: 4500px ; min-width: 1300px; max-width: 1350px;">
+        <div >
+        <div style="float:left; width: 600px;">
+            <h1
+            class="h1-title"
+            >
+            Для нас важен каждый
+            </h1>
+            <img
+                draggable="false"
+                src="dodo3_files/slogan_1784115660.png"
+                alt="Слоган"
+                loading="lazy"
+            />
+        </div>  
+        <div style="float:left; margin-left: 55px; margin-top: 50px; padding-left: 50px; margin-bottom: 80px; ; width: 500px; height: 600;">
+            <p style="font-family: Dodo Rounded v2,sans-serif;
+            font-size: 22px;
+            line-height: 36px;
+            font-weight: 400;
+            color: #000;">
+                Людям нравится работать, когда они чувствуют свою ценность.
+                В&nbsp;большой компании человек может теряться, чувствовать
+                себя менее значимым.<br /><br />
+                Мы&nbsp;в&nbsp;Додо уверены: чем больше компания, тем больше
+                внимания должно быть к&nbsp;тем, кто с&nbsp;ней&nbsp;работает.
+              </p>
+        </div>
+        <div style="float:none; position:relative;">
+            <h2 style="
+            margin-bottom: -17.5px;
+            margin-left: 58px;
+            font-size: 46px;
+            color: #000;
+            font-style: normal;
+            font-family: Dodo Rounded v2,sans-serif;
+            font-weight: 500;
+            line-height: 64px;
+            transform: rotate(-2.5deg);">
+              5&nbsp;личных видео-историй о&nbsp;Додо изнутри
+            </h2>
+        </div>
+        </div>
+        <div  style="clear:both; margin-top: 30px; height: 650px; width: 100%;">
+            <div style="float:left; width: 30px; height: 600px; margin-top: auto; margin-bottom: auto;"> 
+                <img
+                style="margin-top: 270px; "
+                draggable="false"
+                src="dodo3_files/arrow_left.png"
+                alt="Левая стрелка"
+                loading="lazy"
+            /> </div>
+            <div style="float:left; height: 650px; margin-left: 15px;">
+              <img 
+                draggable="false"
+                src="dodo3_files/fake_video.png"
+                alt="Вместо видео"
+                loading="lazy"
+                style="position: relative;"
+              /></div>
+            <div style="float:right; width: 30px;height: 600px;"> 
+                <img
+                style="margin-top: 270px; "
+                draggable="false"
+                src="dodo3_files/arrow_right.png"
+                alt="Правая стрелка"
+                loading="lazy"
+            /> </div>
+        </div>
+        <div  style="height: 450px; margin-bottom: 10px;" >
+            <div>
+                <h2 class="h2-title" >
+                  Кем можно быть в&nbsp;пиццерии
+                </h2>
+                <p class="title-text"
+                >
+                  Ищем тех, кто хочет приходить к&nbsp;нам с&nbsp;удовольствием
+                  каждый день. Присоединяйтесь!
+                </p>
+            </div>
+            <div>
+                <div style="float:left; margin-right: 10px;">
+                    <img
+                        style="border-radius: 30px;"
+                        width="206"
+                        height="268"
+                        alt="Вакансия"
+                        loading="lazy"
+                        sizes="206px"
+                        srcset="dodo3_files/pos1_805a0ff652.png 206w"
+                        />
+                        <div style="margin-top: -70px; margin-left: 20px;">
+                            <h3 class="h3-worker">
+                              Курьер
+                            </h3>
+                        </div>
+                </div>
+                <div style="float:left; margin-right: 10px;">
+                    <img
+                        style="border-radius: 30px;"
+                        width="206"
+                        height="268"
+                        alt="Вакансия"
+                        loading="lazy"
+                        sizes="206px"
+                        srcset="dodo3_files/pos3_dac3f8e2ff.png 206w"
+                        />
+                        <div style="margin-top: -70px; margin-left: 20px;">
+                            <h3 class="h3-worker">
+                              Кассир
+                            </h3>
+                        </div>
+                </div>
+                <div style="float:left; margin-right: 10px;">
+                    <img
+                        style="border-radius: 30px;"
+                        width="206"
+                        height="268"
+                        alt="Вакансия"
+                        loading="lazy"
+                        sizes="206px"
+                        srcset="dodo3_files/pos4_305a98c676.png 206w"
+                        />
+                        <div style="margin-top: -70px; margin-left: 20px;">
+                            <h3 class="h3-worker">
+                              Пиццамейкер
+                            </h3>
+                        </div>
+                </div>
+                <div style="float:left; margin-right: 10px;">
+                    <img
+                        style="border-radius: 30px;"
+                        src="dodo3_files/pos2_5fa68f4d3e.png"
+                        width="206"
+                        height="268"
+                        alt="Вакансия"
+                        loading="lazy"
+                        sizes="206px"
+                        srcset="dodo3_files/pos2_5fa68f4d3e.png 206w"
+                        />
+                        <div style="margin-top: -70px; margin-left: 20px;">
+                            <h3 class="h3-worker">
+                              Клинер
+                            </h3>
+                        </div>
+                </div>
+                <div style="float:left; margin-right: 10px;">
+                    <img
+                        style="border-radius: 30px;"
+                        width="206"
+                        height="268"
+                        alt="Вакансия"
+                        loading="lazy"
+                        sizes="206px"
+                        srcset="dodo3_files/story_1_94b46de958.jpg 206w"
+                        />
+                        <div style="margin-top: -70px; margin-left: 20px;">
+                            <h3 class="h3-worker">
+                              Менеджер
+                            </h3>
+                        </div>
+                </div>
+                <div style="float:left; margin-right: 10px;">
+                    <img
+                        style="border-radius: 30px;"
+                        width="206"
+                        height="268"
+                        alt="Вакансия"
+                        loading="lazy"
+                        sizes="206px"
+                        srcset="dodo3_files/pos6_f9e0aff104.png 206w"
+                        />
+                        <div style="margin-top: -70px; margin-left: 20px;">
+                            <h3 class="h3-worker">
+                              Управляющий
+                            </h3>
+                        </div>
+                </div>
+                
+            </div>
+        </div>
+        <div  style="margin-top: 0px; height: 600px; width: 100%;">
+            <div style="float: left; width: 57%;">
+                <h2 style="  font-size: 46px;
+                line-height: 64px;
+                font-weight: 500;
+                font-family: Dodo Rounded v2,sans-serif;"
+                  >
+                    Почему людям нравится&nbsp;&nbsp; работать в&nbsp;Додо?
+                  </h2>
+                  <p style="font-family: Dodo Rounded v2,sans-serif;
+                  font-size: 22px;
+                  line-height: 36px;
+                  font-weight: 400;
+                  color: #000;"
+                >
+                    Додо Пицца&nbsp;— международная сеть пиццерий родом
+                    из&nbsp;Сыктывкара. Мы&nbsp;уже открыли более 800 пиццерий
+                    в&nbsp;17&nbsp;странах и&nbsp;продолжаем открывать новые.
+                    <br /><br />
+                    Обычно люди приходят в&nbsp;Додо, чтобы просто поесть или
+                    отдохнуть. Именно команда пиццерии делает их&nbsp;опыт
+                    незабываемым: создает атмосферу уюта, готовит
+                    и&nbsp;доставляет ароматную пиццу.
+                    <br /><br />
+                    Чтобы команда дарила радость сотням клиентов,
+                    мы&nbsp;уделяем внимание ее&nbsp;комфорту.
+                  </p>
+            </div>
+            <div style="float: left; width: 35%; margin-top: 5%; margin-left: 8%;">
+                <div style="float: left; width: 50%;">
+                    <img
+                          draggable="false"
+                          width="52"
+                          height="52"
+                          src="dodo3_files/like1_f2e04214ac.png"
+                          alt="Иконка"
+                          loading="lazy"
+                        />
+                        <div class="double-phrase-block">
+                            <span class="first-phrase"
+                              >Гибкий</span
+                            >
+                            <span class="second-phrase"
+                              >график</span
+                            >
+                        </div>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <img
+                          draggable="false"
+                          width="52"
+                          height="52"
+                          src="dodo3_files/like2_f8932643ba.png"
+                          alt="Иконка"
+                          loading="lazy"
+                        />
+                        <div class="double-phrase-block">
+                            <span class="first-phrase"
+                              >Старт</span
+                            >
+                            <span class="second-phrase"
+                              >без опыта</span
+                            >
+                        </div>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <img
+                          draggable="false"
+                          width="52"
+                          height="52"
+                          src="dodo3_files/like3_3aff907dbf.png"
+                          alt="Иконка"
+                          loading="lazy"
+                        />
+                        <div class="double-phrase-block">
+                            <span class="first-phrase"
+                              >Рядом</span
+                            >
+                            <span class="second-phrase"
+                              >с домом</span
+                            >
+                        </div>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <img
+                          draggable="false"
+                          width="52"
+                          height="52"
+                          src="dodo3_files/like4_119128e92f.png"
+                          alt="Иконка"
+                          loading="lazy"
+                        />
+                        <div class="double-phrase-block">
+                            <span class="first-phrase"
+                              >Быстрый</span
+                            >
+                            <span class="second-phrase"
+                              >рост</span
+                            >
+                        </div>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <img
+                          draggable="false"
+                          width="52"
+                          height="52"
+                          src="dodo3_files/like5_b734e34ece.png"
+                          alt="Иконка"
+                          loading="lazy"
+                        />
+                        <div class="double-phrase-block">
+                            <span class="first-phrase"
+                              >Отсутствие</span
+                            >
+                            <span class="second-phrase"
+                              >штрафов</span
+                            >
+                        </div>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <img
+                          draggable="false"
+                          width="52"
+                          height="52"
+                          src="dodo3_files/like6_762bbc69bd.png"
+                          alt="Иконка"
+                          loading="lazy"
+                        />
+                        <div class="double-phrase-block">
+                            <span class="first-phrase"
+                              >Стабильная</span
+                            >
+                            <span class="second-phrase"
+                              >оплата</span
+                            >
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 900px;">
+            <div style="width: 58%;">
+                <h2 class="h2-title"
+                >
+                  Забота о&nbsp;каждом
+                </h2>
+                <p class="title-text"
+                >
+                  Для удовольствия от&nbsp;работы людям мало лишь оплаты
+                  и&nbsp;удобного графика. Заботу о&nbsp;каждом
+                  мы&nbsp;проявляем через уважение, открытость и&nbsp;развитие
+                  тех, кто этого хочет.
+                </p>
+            </div>
+            <div>
+                <div class="card" style="
+                background-color: #C5A6CF;">
+                    <div >
+                        <img
+                          draggable="false"
+                          width="72"
+                          height="72"
+                          src="dodo3_files/thumb_up_2x_9db44b36eb.png"
+                          alt="Иконка"
+                          loading="lazy"
+                          data-v-546aae94=""
+                        />
+                      </div>
+                      <h3 class="h3-card" data-v-546aae94="">
+                        Уважение&nbsp;— основа работы в&nbsp;команде
+                      </h3>
+                      <p class="card-text" >
+                        Общаться уважительно&nbsp;— такая&nbsp;же норма, как
+                        готовить пиццу по&nbsp;рецепту. И&nbsp;так&nbsp;же
+                        важно. <br /><br />
+                        Каждый в&nbsp;команде знает, что для хороших отношений
+                        нет разницы в&nbsp;национальности, опыте работы или
+                        цвете волос. Мы&nbsp;ценим друг друга и&nbsp;вклад
+                        каждого в&nbsp;общее дело.
+                      </p>
+                </div>
+                <div class="card" style="background-color: #ED771E;">
+                    <div >
+                        <img
+                          draggable="false"
+                          width="72"
+                          height="72"
+                          src="dodo3_files/message_2x_a19d7f1375.png"
+                          alt="Иконка"
+                          loading="lazy"
+                          data-v-546aae94=""
+                        />
+                      </div>
+                      <h3 class="h3-card" data-v-546aae94="">
+                        Открытость<br />
+                          во&nbsp;всем
+                      </h3>
+                      <p class="card-text" >
+                        В&nbsp;Додо делятся опытом, признаются в&nbsp;ошибках
+                          и&nbsp;всегда готовы услышать, что можно улучшить.
+                          <br /><br />
+                          Раз в&nbsp;месяц собираем мнения команды о&nbsp;том,
+                          что нравится, а&nbsp;что нет. И&nbsp;отвечаем
+                          на&nbsp;все комментарии. Можно не&nbsp;бояться
+                          говорить о&nbsp;неудобстве&nbsp;—
+                          мы&nbsp;прислушаемся, чтобы сделать условия
+                          комфортней.
+                      </p>
+                </div>
+                <div class="card" style="background-color: #EFE41A;">
+                    <div >
+                        <img
+                          draggable="false"
+                          width="72"
+                          height="72"
+                          src="dodo3_files/arrow_2x_1c546b2d11.png"
+                          alt="Иконка"
+                          loading="lazy"
+                          data-v-546aae94=""
+                        />
+                      </div>
+                      <h3 class="h3-card" data-v-546aae94="">
+                        Развитие для тех, кто&nbsp;этого хочет
+                      </h3>
+                      <p class="card-text" >
+                        Из&nbsp;тех, кто пришел ненадолго, многие остаются.
+                          У&nbsp;каждого есть возможность расти&nbsp;— например,
+                          стать менеджером и&nbsp;управлять командой.
+                          Мы&nbsp;обучаем этому прямо&nbsp;в&nbsp;пиццерии.
+                          <br /><br />
+                          А&nbsp;если карьерного роста не&nbsp;хочется, можно
+                          продолжать работать на&nbsp;любимой должности
+                          и&nbsp;стабильно зарабатывать.
+                      </p>
+                </div>
+            </div>
+        </div>
+        <div class = "ms mb-50">
+          <div class = "mb-50"><a class = "text fnw fns-32">Заполните анкету</a></div>
+          <form
+                      class="questioning__form"
+                      method="post" 
+                      action="/Form/SendForm"
+                    >
+          <ul class = "lia mb-50">
+              <li>
+                  <input class = "boxes mr-30" name="City" placeholder = "Город"></input>
+                  <input class = "boxes mr-30" name="WorkAdress" placeholder = "Адрес пиццерии"></input>
+                  <input class = "boxes mr-30 gg" name="Profession" placeholder = "Кем хотите быть"></input>
+              </li>
+              <li>
+                  <input class = "ml-30 boxes" name="Name" placeholder = "Имя"></input>
+                  <input class = "ml-30 boxes" name="Surname" placeholder = "Фамилия"></input>
+                  <ul class = "ml-30 lia">
+                      <li><input class = "wd275 mr-10 boxes" name="Birthday" placeholder = "День рождения"></input></li>
+                      <li><input class = "wd275 ml-10 boxes" name="Phone" placeholder = "Телефон"></input></li>
+                  </ul>
+                  <input  class = "ml-30 boxes" name="NWLink" placeholder = "Ссылка на соцсети"></input>
+                  <a class = "ml-30 text ggl fns-16">По желанию. На случай, если не дозвонимся по телефону.</a>
+              </li>
+          </ul>
+          <input type = "checkbox" class="custom-checkbox" id="happy" name="happy" value="yes">
+          <label for = "happy"><a class = "text black fns-18">Согласен на &nbsp;<a class = "text or fns-18" href = "https://rabotavdodo.ru/uploads/policy_3ac21d6f68.html" target = "_blank" >обработку персональных данных</a></a></label>
+          <div >
+            <button
+            class = "but org text"
+            type="submit"
+          >
+            Отправить
+          </button>
+        </div>
+      </form>
+          <ul class = "lia">
+              <li><div><a class = "text fns-32">Остались вопросы?</a><br>
+                  <br><p class = "text fns22">Здесь мы собрали самые популярные.</p>
+                  <p class = "text fns22">Если не нашли свой вопрос, напишите нам на почту</p>
+                  <p class = "text or fns22">team@dodobrands.io</p>
+              </div></li>
+              <li>
+                  <div class = "mb-30"><a class = "text fns40 or m">Курьерам&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><a class = "text fns40">Работникам кухни</a></div>
+                  <div class = "boxes1 gg mb-10"><a class = "text fns22">Какие документы нужны для сотрудничества?</a></div>
+                  <div class = "boxes1 gg mb-10"><a class = "text fns22">Как составляется график?</a></div>
+                  <div class = "boxes1 gg mb-10"><a class = "text fns22">Из чего складывается вознаграждение?</a></div>
+                  <div class = "boxes1 gg mb-10"><a class = "text fns22">На чем можно доставлять заказы?</a></div>
+                  <div class = "boxes1 gg mb-10"><a class = "text fns22">Есть ли штрафы?</a></div>
+  
+              </li>
+          </ul>
+      </div>
+    </div>
+    <footer>
+      <div class="centerblock text ms">
+          <div class="line_block">
+              <a class = "black">Додо Пицца</a>
+              <br>
+              <a href = "https://dodopizza.ru/orenburg/about" target = "_blank" class = "gray">О нас</a>
+              <br>
+              <a href = "https://book.dodopizza.info/" target = "_blank" class = "gray">Додо-книга</a>
+              <br>
+              <a href = "https://sila-uma.ru/aboutdodo" target = "_blank" class = "gray">Блог "Сила ума"</a>
+              <br>
+              <a href = "https://dodois.com/" target = "_blank" class = "gray">Додо ИС</a>
+          </div>
+          <div class="line_block">
+              <a>Ищем</a>
+              <br>
+              <a href = "https://rabotavdodo.ru/?utm_source=web" target = "_blank" class = "gray">В пиццерии</a>
+              <br>
+              <a href = "http://dodocc.ru/" target = "_blank" class = "gray">В контакт-центр</a>
+          </div>
+          <div class="line_block">
+              <a>Партнерам</a>
+              <br>
+              <a href = "https://www.dodofranchise.ru/" target = "_blank" class = "gray">Франшиза</a>
+              <br>
+              <a href = "https://dodoinvest.com/" target = "_blank" class = "gray">Инвестиции</a>
+              <br>
+              <a href = "https://bidzaar.com/companies/view/d1827205-1309-4442-8adb-f6887474e684" target = "_blank" class = "gray">Поставщикам</a>
+              <br>
+              <a href = "https://www.dodoarenda.ru/" target = "_blank" class = "gray">Предложить помещение</a>
+          </div>
+          <div class="line_block">
+              <a>Это интересно</a>
+              <br>
+              <a href = "https://www.bezperchatok.ru/" target = "_blank" class = "gray">Почему мы готовим без перчаток?</a>
+              <br>
+              <a href = "https://www.dodofriendly.ru/" target = "_blank" class = "gray">Экскурсии и мастер-классы</a>
+              <br>
+              <a href = "https://b2b.dodopizza.org/" target = "_blank" class = "gray">Корпоративные заказы</a>
+          </div>
+          <div class="mrgn-5 line_block"><a href = "https://app.appsflyer.com/ru.dodopizza.app?af_ad=icon&pid=dodopizza.site&af_click_lookback=7d&c=web" target = "_blank"><img width="120" height="35" src="dodo3_files/googleplay_271ed894bd.png"></a></div>
+          <div class="mrgn-5 line_block"><a href = "https://app.appsflyer.com/id894649641?af_ad=icon&pid=dodopizza.site&af_click_lookback=7d&c=web" target = "_blank" ><img width="120" height="35" src="dodo3_files/appstore_476166ec50.svg"></a></div>
+      </div>
+      <br>
+      <ul class = "lib ms mb-30">
+          <li><a href = "https://vk.com/dodo" target = "_blank" class = "text mrgn-20 gray"><img width="24" height="24" src="dodo3_files/vk_g_a505792c5c.svg">ВКонтакте&nbsp;&nbsp;&nbsp;</a></li>
+          <li><a href = "https://www.youtube.com/dodomovie" target = "_blank" class = "text mrgn-20 gray"><img width="24" height="24" src="dodo3_files/youtube_g_3930a841c3.svg">YouTube</a></li>
+      </ul>
+      <div class = "l1 ms mb-30"></div>
+      <div class = "fblock text ms mb-30">
+          <div class = "gray"><a><img src="dodo3_files/copy-dodo.8b410ea.svg">&nbsp;&nbsp;©&nbsp;2023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+          <div><a class = "gray" href = "https://rabotavdodo.ru/uploads/useragreement_c31f17871d.html" target = "_blank">Пользовательское соглашение&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+          <div><a class = "gray" href = "https://rabotavdodo.ru/uploads/policy_3ac21d6f68.html" target = "_blank">Политика обработки персональных данных</a></div>
+          <div class = "mla"><a class = "gray" href="mailto:feedback@dodopizza.com">feedback@dodopizza.com</a></div>
+      </div>
+      <div class="coords lgray ms text"><span>©&nbsp;2023&nbsp;ООО «Додо Франчайзинг» <br data-v-1b75af2e="">
+      ОГРН 1131101001844, ИНН 1101140415 167001, <br data-v-1b75af2e="">
+      Республика Коми, г. Сыктывкар, Октябрьский проспект, д.&nbsp;16</span></div>
+  </footer>
+  </body>
+</html>
